@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  background-color: rgb(250 250 249);
+}
+
+:root.dark {
+  background-color: rgb(28 25 23);
+}
+
 body {
   width: 100vw;
   min-height: 100vh;
