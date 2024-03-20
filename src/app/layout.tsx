@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/common/Header';
+import MainLayout from '@/components/common/MainLayout';
+import Providers from '@/components/common/Providers';
 
 const SpoqaHanSans = localFont({
   src: [
@@ -47,8 +49,12 @@ export default function RootLayout({
   return (
     <html lang='ko' className={`${SpoqaHanSans.variable} font-spoqa`}>
       <body>
-        <Header />
-        {children}
+        <Providers>
+          <MainLayout>
+            <Header />
+            {children}
+          </MainLayout>
+        </Providers>
       </body>
     </html>
   );
