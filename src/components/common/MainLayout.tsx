@@ -6,8 +6,8 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='w-full min-h-screen flex justify-center bg-lightBg dark:bg-darkBg transition-all'>
-      <div className='w-full max-w-6xl mx-auto px-4 bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText transition-all'>
+    <div className='w-full min-h-screen flex justify-center bg-lightBg dark:bg-darkBg transition-all ease-linear'>
+      <div className='w-full max-w-6xl mx-auto px-4 bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText transition-all ease-linear'>
         {children}
       </div>
     </div>

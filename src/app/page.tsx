@@ -1,3 +1,9 @@
+import TitleBanner from '@/components/home/TitleBanner';
+
 export default function Home() {
-  return <div>안녕하세요! Hellooo</div>;
+  return (
+    <div>
+      <TitleBanner />
+    </div>
+  );
 }

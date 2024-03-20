@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         spoqa: ['var(--font-spoqa)'],
+        roboto: ['var(--roboto)'],
       },
       colors: {
         lightBg: 'rgb(250 250 249)', // stone 50

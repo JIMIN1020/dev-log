@@ -1,9 +1,16 @@
 import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/common/Header';
 import MainLayout from '@/components/common/MainLayout';
 import Providers from '@/components/common/Providers';
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['500', '700', '900'],
+  variable: '--roboto',
+});
 
 const SpoqaHanSans = localFont({
   src: [
@@ -29,7 +36,7 @@ const SpoqaHanSans = localFont({
     },
     {
       path: '../../public/fonts/SpoqaHanSansNeo-Bold.woff2',
-      weight: '700',
+      weight: '900',
       style: 'normal',
     },
   ],
@@ -47,7 +54,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='ko' className={`${SpoqaHanSans.variable} font-spoqa`}>
+    <html
+      lang='ko'
+      className={`${SpoqaHanSans.variable} ${roboto.variable} font-spoqa`}
+    >
       <body>
         <Providers>
           <MainLayout>
