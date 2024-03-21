@@ -3,7 +3,7 @@ import { BiSolidTerminal } from 'react-icons/bi';
 
 export default function Nav() {
   return (
-    <div className='flex items-end'>
+    <nav className='flex items-end'>
       <Link
         href='/'
         className='flex items-center gap-2 px-3 py-[6px] hover:bg-light_hover rounded-lg dark:hover:bg-dark_hover'
@@ -17,6 +17,6 @@ export default function Nav() {
       >
         <h2 className='text-[16px]'>Posts</h2>
       </Link>
-    </div>
+    </nav>
   );
 }
