@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
-import Header from '@/components/common/Header';
 import MainLayout from '@/components/common/MainLayout';
 import Providers from '@/components/common/Providers';
 
@@ -60,10 +59,7 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <MainLayout>
-            <Header />
-            {children}
-          </MainLayout>
+          <MainLayout>{children}</MainLayout>
         </Providers>
       </body>
     </html>
