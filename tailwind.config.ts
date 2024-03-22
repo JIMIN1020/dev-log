@@ -20,6 +20,8 @@ const config: Config = {
         darkText: 'rgb(250 250 249)', // stone 50
         light_hover: 'rgb(231 229 228)', // stone 200
         dark_hover: 'rgb(68 64 60)', // stone 700
+        gray: 'rgb(87 83 78)', // stone 600
+        lightgray: 'rgb(120 113 108)', // stone 500
       },
     },
     plugins: [],

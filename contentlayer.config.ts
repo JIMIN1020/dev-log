@@ -7,6 +7,7 @@ const Post = defineDocumentType(() => ({
   filePathPattern: `**/*.mdx`,
   // 작성한 글 정보에 대해 입력해야하는 필드 정의
   fields: {
+    id: { type: 'string', required: true },
     title: { type: 'string', required: true },
     description: {
       type: 'string',
