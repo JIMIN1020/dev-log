@@ -12,7 +12,7 @@ function PostList({ category }: PostListProps) {
     <div className='flex flex-col flex-1 gap-2'>
       <div className='flex items-end pl-5 gap-[10px]'>
         <SubTitle title='All Posts' />
-        <span className='mb-[7px] text-lightgray'>
+        <span className='mb-[7px] text-lightgray dark:text-darkText'>
           {category === 'All' ? '' : `— ${category}`}
         </span>
       </div>
