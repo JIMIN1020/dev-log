@@ -17,7 +17,7 @@ export default function PostItem({ postData }: PostItemProps) {
     >
       <div className='flex justify-between'>
         <h4 className='font-black text-[18px]'>{title}</h4>
-        <span className='px-2 py-[3px] border-[1px] border-stone-300 dark:border-none bg-stone-100 rounded-lg text-gray dark:bg-stone-600 dark:text-stone-100'>
+        <span className='px-2 py-[3px] border-[1px] border-stone-300 dark:border-stone-700 bg-stone-100 rounded-lg text-gray dark:bg-stone-600 dark:text-stone-100'>
           {category}
         </span>
       </div>
