@@ -1,9 +1,11 @@
 import { allPosts } from '@/contentlayer/generated';
 import { Metadata } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import { notFound } from 'next/navigation';
-import dayjs from '../../../components/libs/dayjs';
+
 import React from 'react';
+import MdxComponents from '@/components/posts/MdxComponents';
+
+import PostTitle from '@/components/posts/PostTitle';
 
 interface PostProps {
   params: {
@@ -29,16 +31,11 @@ export function generateMetadata({ params }: PostProps): Metadata {
       description: post?.description,
       locale: 'ko-KR',
       siteName: 'jimin1020.github.io',
-      url: `${'https://jimin1020.github.io' + slug + '/'}`,
+      url: `${'https://jimin1020.github.io/' + slug + '/'}`,
     },
     robots: {
       index: true,
       follow: true,
-    },
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1,
     },
   };
 }
@@ -47,15 +44,12 @@ export default function page({ params }: PostProps) {
   const { slug } = params;
   const post = allPosts.find((post) => post._raw.flattenedPath === slug);
 
-  const MDXComponent = useMDXComponent(post!.body.code);
-
   if (!post) notFound();
 
   return (
-    <article>
-      <h2>{post.title}</h2>
-      <span>{dayjs(post.createdAt).format('YYYY-MM-DD')}</span>
-      <MDXComponent />
+    <article className='w-full flex flex-col'>
+      <PostTitle post={post} />
+      <MdxComponents post={post} />
     </article>
   );
 }

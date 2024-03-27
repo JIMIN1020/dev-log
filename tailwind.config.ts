@@ -24,7 +24,7 @@ const config: Config = {
         lightgray: 'rgb(120 113 108)', // stone 500
       },
     },
-    plugins: [],
+    plugins: [require('@tailwindcss/typography')],
   },
 };
 

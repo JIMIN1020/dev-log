@@ -1,10 +1,137 @@
 ---
-id: My-First-Post-2023-08-10
-title: 자바스크립트 함수의 종류에 대해서
-description:
-  익명함수, 즉시 실행 함수, 화살표 함수.. 자바스크립트의 함수에 대해서 알아보자!
+id: spread-and-rest-2023-08-10
+title: Javascript의 Spread & Rest 문법
+description: ES6 문법인 Spread, Rest의 차이는 뭘까?
 category: JavaScript
 createdAt: 2023-08-10
 ---
 
-This is My First Post!!
+## spread operator
+
+---
+
+spread 라는 단어가 가지고 있는 의미는 펼치다, 퍼뜨리다이다.
+
+이 연산자를 이용하여 배열, 문자열, 객체 등 반복 가능한 객체를 펼칠 수 있다.
+
+```jsx
+// array
+var arr1 = [1, 2, 3, 4, 5];
+var arr2 = [...arr1, 6, 7, 8, 9];
+console.log(arr2); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+// string
+var str1 = 'hello';
+var str2 = [...str1];
+console.log(str2); // [ "h", "e", "l", "l", "o" ]
+```
+
+### 1. 배열에서의 용도
+
+---
+
+- **배열 병합 (Array Concatenation)**
+
+  기존에는 배열을 합치기 위해 `concat` 메소드를 사용했지만, spread operator를
+  사용하면 쉽게 배열을 합칠 수 있다.
+
+  ```jsx
+  var arr1 = [1, 2, 3];
+  var arr2 = [4, 5, 6];
+
+  var arr = [...arr1, ...arr2];
+  console.log(arr); // [ 1, 2, 3, 4, 5, 6 ]
+  ```
+
+- **배열 복사 (Copying Arrays)** 자바스크립트에서 배열을 새로운 변수에 할당하면
+  그 변수에 담긴 배열은 기존 배열을 참조하게 된다. 기존에는 배열을 복사하기 위해
+  `slice` 또는 `map` 을 사용했으나, 마찬가지로 spread operator를 사용할 수 있다.
+
+  ```jsx
+  var arr1 = [1, 2, 3, 4, 5];
+  var arr2 = [...arr1];
+  arr2.push(6);
+
+  console.log(arr2); // [ 1, 2, 3, 4, 5, 6 ]
+  ```
+
+  이러한 복사 방식은 얕은 복사에 해당하기 때문에 배열 안에 객체가 있는 경우,
+  원본 배열의 객체를 참조한다. → 원본 배열 내의 객체가 변경되면 이를 복사한 곳의
+  값도 변경됨!
+
+### 2. 함수에서의 용도
+
+---
+
+함수를 호출할 때 인자로 값을 펼쳐 전달할 수도 있다.
+
+```jsx
+var numbers = [9, 4, 7, 1];
+Math.min(...numbers); // 1
+```
+
+### 3. 객체에서의 용도
+
+---
+
+배열을 복사하듯이 객체를 복사할 수도 있고,
+
+객체를 펼친 후 특정한 속성 값을 변경하면 해당 속성 값이 새로운 값으로 덮어쓰기
+되면서 업데이트가 된다.
+
+```jsx
+var currentState = { name: '철수', species: 'human' };
+currentState = { ...currentState, age: 10 };
+console.log(currentState); // {name: "철수", species: "human", age: 10}
+
+currentState = { ...currentState, name: '영희', age: 11 };
+console.log(currentState); // {name: "영희", species: "human", age: 11}
+```
+
+## rest
+
+---
+
+rest의 생김새는 spread operator와 똑같으나, 하는 역할은 반대이다.
+
+`Spread` 가 배열이나 객체 등을 펼치는 것이라면, `Rest` 는 개별 요소들을 하나의
+묶음으로 만들어 준다.
+
+### 1. 구조분해할당 (Destructuring)
+
+---
+
+배열이나 객체를 구조 분해 할당할 때 사용할 수 있다.
+
+rest에는 나머지 값들이 담기게 된다.
+
+```jsx
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+({ a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 });
+```
+
+### 2. 함수에서의 용도
+
+---
+
+함수의 매개변수를 spread 형식으로 작성한 것을 Rest Parameter라고 한다.
+
+→ rest parameter는 항상 마지막에 위치해야 한다.
+
+rest 문법을 활용하면 인자로 전달된 값들을 하나로 모아 배열에 담는다.
+
+```jsx
+function add(...rest) {
+  let sum = 0;
+  for (let item of rest) {
+    sum += item;
+  }
+  return sum;
+}
+
+console.log(add(1)); // 1
+console.log(add(1, 2)); // 3
+console.log(add(1, 2, 3)); // 6
+```
+
+→ 기존 자바스크립트의 `arguments` 와 같은 방식!
