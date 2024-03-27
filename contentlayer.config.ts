@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import rehypePrettyCode from 'rehype-pretty-code';
 
 /* ----- content type 정의 ----- */
 const Post = defineDocumentType(() => ({
@@ -28,7 +29,18 @@ const Post = defineDocumentType(() => ({
   },
 }));
 
+/** @type {import('rehype-pretty-code').Options} */
+const prettyCodeOptions = {
+  theme: 'material-theme-darker',
+  // github-dark-default, material-theme-ocean, material-theme-darker, night-owl, one-dark-pro, rose-pine, rose-pine-moon, vesper
+};
+
+const rehypePrettyCodePluginWithOptions = rehypePrettyCode as any;
+
 export default makeSource({
   contentDirPath: 'src/posts', // 파일이 있는 루트 폴더
   documentTypes: [Post],
+  mdx: {
+    rehypePlugins: [[rehypePrettyCodePluginWithOptions, prettyCodeOptions]],
+  },
 });

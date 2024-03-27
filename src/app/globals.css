@@ -16,3 +16,28 @@ body {
   min-height: 100vh;
   transition: all 0.5s ease-in-out;
 }
+
+pre {
+  padding: 20px;
+  margin: 16px 0;
+  border-radius: 8px;
+  line-height: 170%;
+  font-size: 13px;
+  /* background-color: rgb(41 37 36); */
+}
+code {
+  counter-reset: line;
+  font-weight: 400;
+}
+
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 16px;
+  text-align: right;
+  color: rgba(166, 166, 166, 0.615);
+}
