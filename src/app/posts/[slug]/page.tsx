@@ -1,11 +1,11 @@
 import { allPosts } from '@/contentlayer/generated';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
 import React from 'react';
 import MdxComponents from '@/components/posts/MdxComponents';
-
 import PostTitle from '@/components/posts/PostTitle';
+import { parseToc } from '@/libs/parseToc';
+import Toc from '@/components/posts/Toc';
 
 interface PostProps {
   params: {
@@ -46,10 +46,15 @@ export default function page({ params }: PostProps) {
 
   if (!post) notFound();
 
+  const toc = parseToc(post.body.raw);
+
   return (
-    <article className='w-full flex flex-col'>
+    <article className='w-full h-fit flex flex-col'>
       <PostTitle post={post} />
-      <MdxComponents post={post} />
+      <div className='flex gap-[20px] justify-between border-b border-stone-300 pb-[70px] mb-[100px]'>
+        <MdxComponents post={post} />
+        <Toc tableOfContents={toc} />
+      </div>
     </article>
   );
 }

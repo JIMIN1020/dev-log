@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 /* ----- content type 정의 ----- */
 const Post = defineDocumentType(() => ({
@@ -41,6 +43,17 @@ export default makeSource({
   contentDirPath: 'src/posts', // 파일이 있는 루트 폴더
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [[rehypePrettyCodePluginWithOptions, prettyCodeOptions]],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ['anchor'],
+          },
+        },
+      ],
+      [rehypePrettyCodePluginWithOptions, prettyCodeOptions],
+    ],
   },
 });

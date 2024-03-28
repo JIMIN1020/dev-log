@@ -1,7 +1,7 @@
 import { Post } from '@/contentlayer/generated';
 import Link from 'next/link';
 import React from 'react';
-import dayjs from '../libs/dayjs';
+import dayjs from '../../libs/dayjs';
 import { BsCalendar4Week } from 'react-icons/bs';
 
 type PostItemProps = {

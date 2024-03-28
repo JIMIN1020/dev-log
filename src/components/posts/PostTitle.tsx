@@ -2,7 +2,7 @@ import { Post } from '@/contentlayer/generated';
 import React from 'react';
 import { BsCalendar4Week } from 'react-icons/bs';
 import { VscListSelection } from 'react-icons/vsc';
-import dayjs from '../libs/dayjs';
+import dayjs from '../../libs/dayjs';
 
 interface PostTitleProps {
   post: Post;

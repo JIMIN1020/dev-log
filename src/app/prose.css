@@ -17,14 +17,14 @@
 }
 
 .prose p {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   line-height: 170%;
 }
 
 .prose p code {
   background-color: rgb(231 229 228);
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 12px;
   padding: 4px 6px;
   font-weight: 700;

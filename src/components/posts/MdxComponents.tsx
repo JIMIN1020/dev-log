@@ -21,7 +21,7 @@ export default function MdxComponents({ post }: MdxComponentsProps) {
   const MdxComponent = useMDXComponent(post.body.code);
 
   return (
-    <div className='prose prose-stone dark:prose-invert'>
+    <div className='prose prose-stone dark:prose-invert w-full'>
       <MdxComponent components={components} />
     </div>
   );
